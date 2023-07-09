@@ -27,12 +27,12 @@ import { ReactText } from 'react';
 import AddProperty from '@/components/AddProperty';
 
 const LinkItems = [
-    { name: 'Home', icon: FiHome },
-    { name: 'Trending', icon: FiTrendingUp },
-    { name: 'Explore', icon: FiCompass },
-    { name: 'Favourites', icon: FiStar },
-    { name: 'Settings', icon: FiSettings },
-  ];
+  { name: 'Home', icon: FiHome },
+  { name: 'Trending', icon: FiTrendingUp },
+  { name: 'Explore', icon: FiCompass },
+  { name: 'Favourites', icon: FiStar },
+  { name: 'Settings', icon: FiSettings },
+];
 
 export default function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,7 +57,8 @@ export default function SimpleSidebar({ children }) {
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}<AddProperty/>
+        {children}
+        {/* <AddProperty/> */}
       </Box>
     </Box>
   );
@@ -65,24 +66,24 @@ export default function SimpleSidebar({ children }) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
-    return (
-      <Box
-        bg={useColorModeValue('white', 'gray.900')}
-        borderRight="1px"
-        borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-        w={{ base: 'full', md: 60 }}
-         pos="fixed"
-        h="full"
-        {...rest}>
-       
-        {LinkItems.map((link) => (
-          <NavItem key={link.name} icon={link.icon}>
-            {link.name}
-          </NavItem>
-        ))}
-      </Box>
-    );
-  };
+  return (
+    <Box
+      bg={useColorModeValue('white', 'gray.900')}
+      borderRight="1px"
+      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      w={{ base: 'full', md: 60 }}
+      pos="fixed"
+      h="full"
+      {...rest}>
+
+      {LinkItems.map((link) => (
+        <NavItem key={link.name} icon={link.icon}>
+          {link.name}
+        </NavItem>
+      ))}
+    </Box>
+  );
+};
 
 const NavItem = ({ icon, children, ...rest }) => {
   return (
@@ -117,7 +118,7 @@ const NavItem = ({ icon, children, ...rest }) => {
 
 
 const MobileNav = ({ onOpen, ...rest }) => {
-        return (
+  return (
     <Flex
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 24 }}
